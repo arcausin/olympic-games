@@ -37,6 +37,11 @@ class Sports
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CategoriesSports::class, inversedBy="sports")
+     */
+    private $categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Sports
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?CategoriesSports
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?CategoriesSports $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
