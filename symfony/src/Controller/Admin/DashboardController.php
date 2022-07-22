@@ -31,7 +31,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Sports', 'fas fa-list', Sports::class);
-        yield MenuItem::linkToCrud('Sports', 'fas fa-list', CategoriesSports::class);
-        yield MenuItem::linkToCrud('Sports', 'fas fa-list', Athletes::class);
+        yield MenuItem::linkToCrud('Catégories de Sports', 'fas fa-list', CategoriesSports::class);
+        yield MenuItem::linkToCrud('Athlètes', 'fas fa-list', Athletes::class);
     }
 }

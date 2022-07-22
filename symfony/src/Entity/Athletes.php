@@ -33,7 +33,7 @@ class Athletes
     private $pays;
 
     /**
-     * @ORM\ManyToOne(targetEntity=sports::class, inversedBy="athletes")
+     * @ORM\ManyToOne(targetEntity=Sports::class, inversedBy="athletes")
      */
     private $sports;
 

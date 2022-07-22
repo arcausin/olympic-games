@@ -127,22 +127,22 @@ class Sports
         return $this->athletes;
     }
 
-    public function addAthlete(Athletes $athlete): self
+    public function addAthletes(Athletes $athletes): self
     {
-        if (!$this->athletes->contains($athlete)) {
-            $this->athletes[] = $athlete;
-            $athlete->setSports($this);
+        if (!$this->athletes->contains($athletes)) {
+            $this->athletes[] = $athletes;
+            $athletes->setSports($this);
         }
 
         return $this;
     }
 
-    public function removeAthlete(Athletes $athlete): self
+    public function removeAthletes(Athletes $athletes): self
     {
-        if ($this->athletes->removeElement($athlete)) {
+        if ($this->athletes->removeElement($athletes)) {
             // set the owning side to null (unless already changed)
-            if ($athlete->getSports() === $this) {
-                $athlete->setSports(null);
+            if ($athletes->getSports() === $this) {
+                $athletes->setSports(null);
             }
         }
 
