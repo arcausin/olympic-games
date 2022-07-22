@@ -17,4 +17,19 @@
         <li>Your template at <code><a href="{{ 'C:/Users/arcau/Desktop/olympic-games/symfony/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
     </ul>
 </div>
+{% if app.user != null %}
+Vous êtes connecté avec l'adresse mail : {{ app.user.email }} <br/>
+<a href="{{ path('app_logout') }}">Se déconnecter !</a><br/>
+{% else %}
+Vous n'êtes pas connecté <br/>
+<a href="{{ path('app_login') }}">Connecter vous !</a><br/>
+<a href="{{ path('app_register') }}">Inscrivez vous !</a><br/>
+{% endif %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('admin') }}">Accéder au Backoffice</a><br/>
+{% elseif app.user != null %}
+Vueillez nous contacter pour accéder au Backoffice
+{% endif %}
+
 {% endblock %}
