@@ -3,20 +3,7 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/arcau/Desktop/olympic-games/symfony/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/arcau/Desktop/olympic-games/symfony/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% if app.user != null %}
 Vous êtes connecté avec l'adresse mail : {{ app.user.email }} <br/>
 <a href="{{ path('app_logout') }}">Se déconnecter !</a><br/>
@@ -31,5 +18,7 @@ Vous n'êtes pas connecté <br/>
 {% elseif app.user != null %}
 Vueillez nous contacter pour accéder au Backoffice
 {% endif %}
+
+<a href="{{ path('app_liste_sports') }}">Liste des sports</a>
 
 {% endblock %}

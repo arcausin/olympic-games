@@ -3,16 +3,15 @@
 {% block title %}Hello ListeSportsController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+
 <h1>La liste des sports olympiques !</h1>
+<a href="{{ path('home') }}">Retour a la page d'accueil</a>
 <ul>
 {% for sport in sports %}
     <li>{{ sport.nom }}</li>
+    <code>{{ sport.description }}</code><br/>
+    <code>lieu : {{ sport.lieu }}</code>
 {% endfor %}
 </ul>
-
 
 {% endblock %}
