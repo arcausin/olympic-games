@@ -16,7 +16,7 @@ Vous n'êtes pas connecté <br/>
 {% if is_granted('ROLE_ADMIN') %}
 <a href="{{ path('admin') }}">Accéder au Backoffice</a><br/>
 {% elseif app.user != null %}
-Vueillez nous contacter pour accéder au Backoffice
+Vueillez nous contacter pour accéder au Backoffice<br/>
 {% endif %}
 
 <a href="{{ path('app_liste_sports') }}">Liste des sports</a>
