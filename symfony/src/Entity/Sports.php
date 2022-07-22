@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SportsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Sports
      * @ORM\ManyToOne(targetEntity=CategoriesSports::class, inversedBy="sports")
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Athletes::class, mappedBy="sports")
+     */
+    private $athletes;
+
+    public function __construct()
+    {
+        $this->athletes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +115,36 @@ class Sports
     public function setCategorie(?CategoriesSports $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Athletes>
+     */
+    public function getAthletes(): Collection
+    {
+        return $this->athletes;
+    }
+
+    public function addAthlete(Athletes $athlete): self
+    {
+        if (!$this->athletes->contains($athlete)) {
+            $this->athletes[] = $athlete;
+            $athlete->setSports($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAthlete(Athletes $athlete): self
+    {
+        if ($this->athletes->removeElement($athlete)) {
+            // set the owning side to null (unless already changed)
+            if ($athlete->getSports() === $this) {
+                $athlete->setSports(null);
+            }
+        }
 
         return $this;
     }
